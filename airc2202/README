@@ -1,0 +1,11 @@
+Readme
+
+Pour la compilation du fichier :
+g++ Algo3WayMerge.cpp -o 3WayMerge
+
+
+Pour lancer l'exécutable :
+./3WayMerge <nom_fichier_original> <nom_fichier_A> <nom_fichier_B> <nom_fichier_merge>
+
+Exemple :
+./3WayMerge ../CompareOriginal ../CompareA ../CompareB CompareSortie
