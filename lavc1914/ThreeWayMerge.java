@@ -91,7 +91,7 @@ public class ThreeWayMerge {
 
         }
 
-        return o; // Sinon on retourne l'original
+        return o; // Si A et B sont terminer, je reprends l'oroginal mais on peut aussi ne rien écrir.
     }
 
 
