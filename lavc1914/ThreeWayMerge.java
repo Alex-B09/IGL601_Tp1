@@ -82,7 +82,7 @@ public class ThreeWayMerge {
 
             } else {
 
-                return "Conflit"; //Si A et B sont différent et que l'original est terminé
+                return a; // A n'est pas terminé mais B oui.
             }
 
         } else if (b != null && !b.isEmpty()){
