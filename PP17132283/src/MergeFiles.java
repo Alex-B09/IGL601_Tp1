@@ -89,16 +89,15 @@ public class MergeFiles {
                     listFileOutput.add(listFileB.get(index));
                 else if( listFileB.get(index).equals(listFileOriginal.get(index))) //Test B=Original => Output:A
                     listFileOutput.add(listFileA.get(index));
-            } else if (index < listFileB.size() && index >= listFileA.size() && index < listFileOriginal.size()){
-                if( listFileB.get(index).equals(listFileOriginal.get(index))) //Test A=Original => Output:B
-                    listFileOutput.add(listFileB.get(index));
-            } else if (index < listFileA.size() && index >= listFileB.size() && (index < listFileOriginal.size())){
-                if( listFileA.get(index).equals(listFileOriginal.get(index))) //Test A=Original => Output:A
-                    listFileOutput.add(listFileA.get(index));
-            } else if (index < listFileA.size() && index < listFileB.size() && index >= listFileOriginal.size()){
-                if( listFileA.get(index).equals(listFileB.get(index)) ) //Test A=B => Output:A
-                    listFileOutput.add(listFileA.get(index));
+            } else if(index >= listFileA.size() && index < listFileB.size() && index < listFileOriginal.size()){
+                listFileOutput.add(listFileB.get(index));
+            } else if(index < listFileA.size() && index >= listFileB.size() && index < listFileOriginal.size()){
+                listFileOutput.add(listFileA.get(index));
+            } else if(index < listFileA.size() && index < listFileB.size() && index >= listFileOriginal.size()){
+                System.out.println("CONFLIT ENTRE DEUX VERSIONS : CHOIX DE L'UTILISATEUR !");
             }
+
+
 
             //incrémentation de l'index
             index++;
