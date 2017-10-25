@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,9 +25,11 @@ public class MergeFiles {
 
         try (BufferedReader br = new BufferedReader((new FileReader(file)))) {
 
-            //br returns as stream and convert it into a List
+            //Récupération des données du fichier dans la liste
             list = br.lines().collect(Collectors.toList());
 
+            //Fermeture du fichier à lire
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,6 +53,27 @@ public class MergeFiles {
         return file;
     }
 
+    /** Copier une liste dans un fichier de sortie
+     *
+     * @param list : liste qui contient les données
+     * @param file : fichier dans lequel les données doivent etre écrites
+     */
+    private void copyArrayToFile(List<String> list, File file){
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            //ecriture des données de la liste dans le fichier (avec une nouvelle ligne pour chaque donnée)
+            for (String s : list) {
+                writer.write(s);
+                writer.newLine();
+            }
+
+            //Flush et fermuture du fichier à écrire
+            writer.flush();
+            writer.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     /**
      *
@@ -61,6 +85,7 @@ public class MergeFiles {
      */
     public void Merge(String nameFileA, String nameFileB, String nameFileOriginal, String nameFileOutput) throws Exception{
 
+        //Création des fichier pour la lecture ou l'écriture
         fileCompareA = new File(nameFileA);
         fileCompareB = new File(nameFileB);
         fileCompareOriginal = new File(nameFileOriginal);
@@ -80,31 +105,29 @@ public class MergeFiles {
         listFileB = copyFiletoArray(fileCompareB);
         listFileOriginal = copyFiletoArray(fileCompareOriginal);
 
+        //Parcours des listes pour créer la liste des doonées à sortir
         while( index < listFileA.size() || index < listFileB.size() || index < listFileOriginal.size()){
 
-            if(index < listFileA.size() && index < listFileB.size() && index < listFileOriginal.size()){
+            if(index < listFileA.size() && index < listFileB.size() && index < listFileOriginal.size()){ //index < A && B && Orig
                 if( listFileA.get(index).equals(listFileB.get(index)) ) //Test A=B => Output:A
                     listFileOutput.add(listFileA.get(index));
                 else if( listFileA.get(index).equals(listFileOriginal.get(index))) //Test A=Original => Output:B
                     listFileOutput.add(listFileB.get(index));
                 else if( listFileB.get(index).equals(listFileOriginal.get(index))) //Test B=Original => Output:A
                     listFileOutput.add(listFileA.get(index));
-            } else if(index >= listFileA.size() && index < listFileB.size() && index < listFileOriginal.size()){
+            } else if(index >= listFileA.size() && index < listFileB.size() && index < listFileOriginal.size()){ //A < index < B && Orig
                 listFileOutput.add(listFileB.get(index));
-            } else if(index < listFileA.size() && index >= listFileB.size() && index < listFileOriginal.size()){
+            } else if(index < listFileA.size() && index >= listFileB.size() && index < listFileOriginal.size()){ //B < index < A && Orig
                 listFileOutput.add(listFileA.get(index));
-            } else if(index < listFileA.size() && index < listFileB.size() && index >= listFileOriginal.size()){
+            } else if(index < listFileA.size() && index < listFileB.size() && index >= listFileOriginal.size()){ //Orig < index < A && B
                 System.out.println("CONFLIT ENTRE DEUX VERSIONS : CHOIX DE L'UTILISATEUR !");
             }
-
-
 
             //incrémentation de l'index
             index++;
         }
 
-        listFileOutput.forEach(System.out::println);
-
+        //Copie de la liste des données de sortie (Récupérer auparavant : voir ci-dessus) dans un fichier
+        copyArrayToFile(listFileOutput,fileCompareOuptut);
     }
-
 }
