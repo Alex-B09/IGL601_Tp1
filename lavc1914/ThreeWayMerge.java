@@ -37,10 +37,10 @@ public class ThreeWayMerge {
 
             PrintWriter outputFile = new PrintWriter(wayoutputFile, "UTF-8");
 
-            while((lineA = buffReadA.readLine()) != null | (lineB = buffReadB.readLine()) != null | (lineOriginal = buffReadOriginal.readLine()) != null){
+            while((lineA = buffReadA.readLine()) != null | (lineB = buffReadB.readLine()) != null | (lineOriginal = buffReadOriginal.readLine()) != null){ // Parcours de tous les fichiers
 
-                out = compare(lineA, lineB, lineOriginal);
-                outputFile.println(out);
+                out = compare(lineA, lineB, lineOriginal); //Comparaison des trois ligne
+                outputFile.println(out); // Ecriture dans le fichier de sortie
 
             }
 
@@ -67,36 +67,37 @@ public class ThreeWayMerge {
 
                 if (a.equals(b)){
 
-                    return a;
+                    return a; //Si A et B sont égal
 
                 }else if (o != null && !o.isEmpty()){
 
                     if(a.equals(o))
-                        return b;
+                        return b; //Si A est égale à l'original
                     else if (b.equals(o))
-                        return a;
+                        return a; //Si B est égale à l'original
                     else
-                      return "Conflit";
+                      return "Conflit"; //Si les 3 fichiers sont différents
 
                 }
 
             } else {
 
-                return a;
+                return "Conflit"; //Si A et B sont différent et que l'original est terminé
             }
 
         } else if (b != null && !b.isEmpty()){
 
-            return b;
+            return b; //Si A est terminé mais pas B
 
         }
-        return o;
+
+        return o; // Sinon on retourne l'original
     }
 
 
     public static void main(String [ ] args) {
 
-      if (System.getProperty("os.name").equals("Linux")){
+      if (System.getProperty("os.name").equals("Linux")){ //Détection de l'OS pour le formatage des chemins d'accès
 
         ThreeWayMerge twm = new ThreeWayMerge(
                 System.getProperty("user.dir") + "/../CompareA",
