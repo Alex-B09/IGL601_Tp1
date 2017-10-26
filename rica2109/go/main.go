@@ -25,11 +25,13 @@ func main() {
 				- Si A != Original et B != Original et A != B	=> CONFLIT!!! Sortie = Original
 				
 			On considère que les lignes vides sont des suppressions du contenu original et sont
-			donc pris en compte.
+			donc pris en compte. (Même celles à la fin du fichier!)
+			
+			En cas de conflit, aucun des deux changements n'est pris en compte, on revient au fichier original.
 		*/
 		
 		//#### CRÉATION DU FICHIER DE RESULTAT ####
-		compareSortie, err := os.Create(fmt.Sprint("../CompareSortie"))
+		compareSortie, err := os.Create(fmt.Sprint("CompareSortie"))
 		if err != nil {
 			fmt.Println("Erreur lors de la création du fichier de sortie.")
 			log.Fatal(err)
