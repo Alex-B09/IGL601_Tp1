@@ -10,9 +10,8 @@ using namespace std;
 int main()
 {
 
-	ofstream Ecriture("Output");
-
-
+	//Ouverture du fichier Sortie en écriture
+	ofstream Ecriture("CompareSortie");
 	if (!Ecriture)
 	{
 		cout << "Erreur de creation" << endl;
@@ -22,11 +21,11 @@ int main()
 
 
 
+
+	//Ouverture des fichiers en lecture
 	ifstream OuvertureA("CompareA");
 	ifstream OuvertureB("CompareB");
 	ifstream OuvertureO("CompareOriginal");
-
-
 
 	if (!OuvertureA)
 	{
@@ -49,6 +48,11 @@ int main()
 		return 0;
 	}
 
+
+
+
+
+
 	int i = 0;
 
 	string ligne_O;
@@ -65,11 +69,7 @@ int main()
 		else if (ligne_A != ligne_O && ligne_B == ligne_O)
 			Ecriture << ligne_A << endl;
 		else if (ligne_A != ligne_O && ligne_B != ligne_O && ligne_A != ligne_B)
-		{
-			Ecriture << "La ligne numero" << i + 1 << "a été modifiée par A et B" << endl;
-			Ecriture << "A a écrit : " << ligne_A << endl;
-			Ecriture << "B a écrit : " << ligne_B << endl;
-		}
+			Ecriture << ligne_A << endl;
 		if (!Ecriture)
 		{
 			cout << "Erreur d'écriture" << endl;
@@ -80,81 +80,54 @@ int main()
 		i++;
 	}
 
+
+	//Si A et B ne sont pas finis
 	while (getline(OuvertureA, ligne_A) && getline(OuvertureB, ligne_B))
 	{
-		//cout << "A et B non finis" << endl;
-
-		if (ligne_A == ligne_B)
-			Ecriture << ligne_A << endl;
-		else
-		{
-			//cout << "A et B differents de O" << endl;
-			Ecriture << "La ligne numero" << i + 1 << "a été modifiée par A et B" << endl;
-			Ecriture << "A a écrit : " << ligne_A << endl;
-			Ecriture << "B a écrit : " << ligne_B << endl;
-		}
+		Ecriture << ligne_A << endl;
 		i++;
 	}
 
+
+	//Si A n'est pas fini
 	while (getline(OuvertureA, ligne_A))
 	{
-		//cout << "A non fini" << endl;
-
-		if (getline(OuvertureO, ligne_O))
-		{
-			if (ligne_A != ligne_O)
-			{
-				//cout << "O non fini et A different de O" << endl;
-				Ecriture << ligne_A << endl;
-			}
-			else
-				Ecriture << endl;
-		}
+		if (getline(OuvertureO, ligne_O) && (ligne_A == ligne_O))
+			Ecriture << endl; 
 		else
-		{
-			//cout << "O fini" << endl;
 			Ecriture << ligne_A << endl;
-		}
 	}
 
+
+	//Si B n'est pas fini
 	while (getline(OuvertureB, ligne_B))
 	{
-		//cout << "B non fini" << endl;
-
-		if (getline(OuvertureO, ligne_O))
-		{
-			if (ligne_B != ligne_O)
-			{
-				//cout << "O non fini et B different de O" << endl;
-				Ecriture << ligne_B << endl;
-			}
-			else
-				Ecriture << endl;
-		}
+		if (getline(OuvertureO, ligne_O) && (ligne_B == ligne_O))
+			Ecriture << endl;
 		else
-		{
-			//cout << "O fini" << endl;
 			Ecriture << ligne_B << endl;
-		}
 	}
 
 
+	//Fermeture des flux
 	OuvertureA.close();
 	OuvertureB.close();
 	OuvertureO.close();
 	Ecriture.close();
 
-	cout << endl;
-	cout << "Affichage du contenu du fichier Output" << endl;
-	cout << endl;
 
-	ifstream Output("Output");
 
+	// Affichage de CompareSortie dans la console 
+	cout << endl;
+	cout << "Affichage du contenu du fichier CompareSortie" << endl;
+	cout << endl;
+	ifstream Output("CompareSortie");
 	string ligne_Output;
 	while (getline(Output, ligne_Output))
 		cout << ligne_Output << endl;
-
 	Output.close();
+
+
 
 	system("PAUSE");
 	return 0;
