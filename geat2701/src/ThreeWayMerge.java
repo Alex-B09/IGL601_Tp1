@@ -3,19 +3,33 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Cette classe permet de faire 3-Way merge. Pour merger, appeler la fonction merge(FileWriter fichierSortie).
+ * Nous considérons ici que la suppression d'une ligne est considéré comme un changement.
+ */
 public class ThreeWayMerge {
     private FileReader fichierA;
     private FileReader fichierB;
     private FileReader fichierOriginal;
 
-
+    /**
+     * Le constructeur de la classe.
+     * @param fichierA un fichier qui doit être fusionner
+     * @param fichierB un autre fichier qui doit être fusionner
+     * @param fichierOriginal le fichier original des fichiers A et B
+     */
     public ThreeWayMerge(FileReader fichierA, FileReader fichierB, FileReader fichierOriginal) {
         this.fichierA = fichierA;
         this.fichierB = fichierB;
         this.fichierOriginal = fichierOriginal;
     }
 
-    
+    /**
+     * Cette méthode permet d'effectuer un merge dans un fichier de sortie spécifique.
+     * Note: il est possible de faire plusieurs merges avec la même instance, mais il faut que le FileWriter en paramètre
+     * soit différent.
+     * @param fichierSortie le fichier de sortie.
+     */
     public void merge(FileWriter fichierSortie){
         try {
             BufferedReader brA = new BufferedReader(fichierA);
@@ -28,9 +42,12 @@ public class ThreeWayMerge {
 
             String ligneS;
 
+            int i = 0; //numéro de ligne (pour le code d'erreur)
+
             //Parcours les trois fichiers
             while((ligneA = brA.readLine()) != null | (ligneB = brB.readLine()) != null | (ligneO = brO.readLine()) != null){ //Si la ligne existe sur au moins un fichier
 
+                i++;
                 ligneA = makeStringNotNull(ligneA);
                 ligneB = makeStringNotNull(ligneB);
                 ligneO = makeStringNotNull(ligneO);
@@ -48,7 +65,8 @@ public class ThreeWayMerge {
                     }else{ // Cas de conflit
                         // Comme c'est par résolution automatique, on va envoyer les deux modifications dans le fichier de sortie
                         //Et donner la possibilité à l'utilisateur de résoudre l'incident:
-                        ligneS = "#Conflit!      #1["+ligneA+"]         #2["+ligneB+"]";
+                        ligneS = "/!\\ Conflit !     #1["+ligneA+"]         #2["+ligneB+"]";
+                        System.err.println("Conflit à la ligne n°"+i);
                     }
                 }
                 ligneS += "\n";
