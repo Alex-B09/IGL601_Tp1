@@ -72,8 +72,6 @@ public class ThreeWayMerge {
 				lineCompareA = brCompareA.readLine();
 				lineCompareB = brCompareB.readLine();
 				
-				System.out.println("fileO "+lineCompareOrignal+" fileA "+lineCompareA+" fileB "+lineCompareB);
-
 				if(equals3(lineCompareA, lineCompareB, lineCompareOrignal)) {	// if this line is the same in all 3 files, or one of the lines is null
 					bwCompareSortie.write(lineCompareOrignal);					// we keep the original line
 				} else if((lineCompareA == null) || (lineCompareOrignal.equals(lineCompareA) && !lineCompareOrignal.equals(lineCompareB))) {	// if this line is the same in file A and Original but not in B
