@@ -10,7 +10,7 @@ le 23 octobre 2017 , Maxime Robert
 */
 void main()
 {
-	//Déclaration de variables
+	//DÃ©claration de variables
 
 	ifstream original;
 	ifstream compareA;
@@ -91,7 +91,7 @@ void main()
 				}
 				else
 				{
-					lineS = "<Conflit>";
+					lineS = LineA;//Cas du conflit (pas de gestion de conflit donc on prend A)
 				}
 			}	
 			sortie << lineS + "\n";
