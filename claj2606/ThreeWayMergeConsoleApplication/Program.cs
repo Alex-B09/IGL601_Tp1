@@ -1,9 +1,8 @@
-﻿using System;
+﻿/* Fait par: Jonathan Clavet-Grenier | CIP: claj2606 | Matricule: 16 070 207 */
+
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ThreeWayMergeConsoleApplication
 {
@@ -17,9 +16,10 @@ namespace ThreeWayMergeConsoleApplication
             const string PATH_OUTPUT_FILE = "../../../../CompareSortie";
 
             int lineIndex = 0;
-            List<string> lstContentFileOriginal = File.ReadAllLines(PATH_FILE_ORIGINAL).ToList();
-            List<string> lstContentFileA = File.ReadAllLines(PATH_FILE_A).ToList();
-            List<string> lstContentFileB = File.ReadAllLines(PATH_FILE_B).ToList();
+
+            List<string> lstContentFileOriginal = File.ReadAllText(PATH_FILE_ORIGINAL).Replace("\r", "").Split('\n').ToList();
+            List<string> lstContentFileA = File.ReadAllText(PATH_FILE_A).Replace("\r", "").Split('\n').ToList();
+            List<string> lstContentFileB = File.ReadAllText(PATH_FILE_B).Replace("\r", "").Split('\n').ToList();
             List<string> lstContentOutputFile = new List<string>();
 
             for (; lineIndex < lstContentFileOriginal.Count; ++lineIndex)
@@ -60,7 +60,7 @@ namespace ThreeWayMergeConsoleApplication
                 //              dans le fichier B, on les ajoute dans le fichier de sortie.
                 lstContentOutputFile.Add(lstContentFileB[lineIndex]);
 
-            File.WriteAllLines(PATH_OUTPUT_FILE, lstContentOutputFile);            
+            File.WriteAllText(PATH_OUTPUT_FILE, string.Join("\n", lstContentOutputFile));                        
         }
     }
 }
