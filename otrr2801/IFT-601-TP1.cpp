@@ -1,4 +1,4 @@
-
+///////////////////////////////////////////////////////
 // author Ruslan Otroc - 15203405
 
 
@@ -21,8 +21,7 @@ int main(int argc, char* argv[])
 	string valueA;
 	string valueB;
 	string valueOriginal;
-
-	int lineNb = 0;
+	
 	
 	fileA.open("./CompareA");
 	fileB.open("./CompareB");
@@ -36,8 +35,7 @@ int main(int argc, char* argv[])
 		getline(fileB, valueB);
 		getline(fileOriginal, valueOriginal);
 
-		lineNb++;
-
+		
 		// valueA et valueB sont pareil
 		if (valueA == valueB) 
 		{
@@ -59,7 +57,7 @@ int main(int argc, char* argv[])
 		// valueA et valueB sont changes, donc il'a un conflict
 		if (valueA != valueB  && valueB != valueOriginal && valueA != valueOriginal) 
 		{
-			fileSortie << "Conflict dans ligne " << lineNb << "\t" << valueOriginal << "\t" << valueA << "\t" << valueB << "\n";
+			fileSortie << "Conflict\t" << valueOriginal << "\t" << valueA << "\t" << valueB << "\n";
 		}
 		
 
