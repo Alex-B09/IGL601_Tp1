@@ -1,0 +1,6 @@
+U:\TOD\TP1\IGL601_Tp1\claj2606\ThreeWayMergeConsoleApplication\bin\Debug\ThreeWayMergeConsoleApplication.exe.config
+U:\TOD\TP1\IGL601_Tp1\claj2606\ThreeWayMergeConsoleApplication\bin\Debug\ThreeWayMergeConsoleApplication.exe
+U:\TOD\TP1\IGL601_Tp1\claj2606\ThreeWayMergeConsoleApplication\bin\Debug\ThreeWayMergeConsoleApplication.pdb
+U:\TOD\TP1\IGL601_Tp1\claj2606\ThreeWayMergeConsoleApplication\obj\Debug\ThreeWayMergeConsoleApplication.csprojResolveAssemblyReference.cache
+U:\TOD\TP1\IGL601_Tp1\claj2606\ThreeWayMergeConsoleApplication\obj\Debug\ThreeWayMergeConsoleApplication.exe
+U:\TOD\TP1\IGL601_Tp1\claj2606\ThreeWayMergeConsoleApplication\obj\Debug\ThreeWayMergeConsoleApplication.pdb
