@@ -1,0 +1,16 @@
+group 'com.gradle.roym1517'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+
+mainClassName = "Merger"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
