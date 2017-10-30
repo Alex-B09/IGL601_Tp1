@@ -1,0 +1,4 @@
+ligne 1 fichier A
+ligne 2 fichier A
+ligne 3 fichier A
+ligne commune aux trois fichiers
