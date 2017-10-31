@@ -58,7 +58,7 @@ public class MergingAlgorithme {
 			lo = _bfo.readLine();
 			
 			if(lo != null) {
-				if(la.equals(lo) && la.equals(lb)) _bfs.write(la);
+				if(la.equals(lo) && la.equals(lb)) _bfs.write(la + "\n");
 				else {
 					if(la != null) {
 						if(lo.equals(la+ "\n")) {
