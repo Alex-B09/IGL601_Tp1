@@ -18,5 +18,4 @@ CONTACT :
 AUTRES : 
 Le code a été écrit avec l'éditeur gedit.
 L'identation est effectuée en utilisant 4 espaces.
-Le lecteur de github utilise des tabulations, déformant l'indentation du code.
 
