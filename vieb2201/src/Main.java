@@ -53,8 +53,8 @@ public class Main {
                                 CompareSortie.set(i,CompareFiles.get(j).get(i));
                             }
                             else if (!CompareSortie.get(i).equals(CompareFiles.get(j).get(i))){
-                                //Si conflit on garde compareA (i = 1)
-                                if(i == 1 ){
+                                //Si conflit on garde compareA (j = 1)
+                                if(j == 1 ){
                                     CompareSortie.set(i,CompareFiles.get(j).get(i));
                                 }
                             }
