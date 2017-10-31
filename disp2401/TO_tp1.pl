@@ -94,8 +94,8 @@ compareLines(Str1,Str2,Str3):-  %Si on est arrive a la fin du fichier Original.
                                 ;at_end_of_stream(Str2) -> compareON(Str1,Str3),!
                                 %Si on est arrive a la fin du fichier CompareB.
                                 ;at_end_of_stream(Str3) -> compareON(Str1,Str2),!
-			                          %Je lis une ligne de chaque fichier.
-			                          ;read_line(Str1,O), read_line(Str2,A), read_line(Str3,B), 
+			        %Je lis une ligne de chaque fichier.
+			        ;read_line(Str1,O), read_line(Str2,A), read_line(Str3,B), 
                                 %Je selectionne la ligne a ecrire.
                                 selectLineOAB(O,A,B),
                                 %Recursion.
@@ -112,7 +112,7 @@ compareLines(Str1,Str2,Str3):-  %Si on est arrive a la fin du fichier Original.
 * \param[in]  Ligne d un fichier lu.
 */
 selectLineOAB(O,A,B):-  (=(O,A) -> write_line(B)
-				                ;(=(O,B) -> write_line(A)
+			;(=(O,B) -> write_line(A)
                         ;write_line(O))).
 
 /**
