@@ -42,11 +42,6 @@ namespace ThreeWayMergeConsoleApplication
                         // Situation 3: Le fichier A et le fichier original ne sont pas pareil, alors on met la ligne actuel du fichier A dans le fichier de sortie.
                         //              Dans ce cas, on s'en fou du fichier B, car on priorise le fichier A de toute façon.
                         lstContentOutputFile.Add(lstContentFileA[lineIndex]);
-                } else if (lineIndex < lstContentFileB.Count)
-                {
-                    // Situation 4: Le fichier A est plus court que l'original, ce qui veut dire qu'à partir de maintenant, peu importe les valeurs du fichier B,
-                    //              on peut l'ajouter dans le fichier de sortie.
-                    lstContentOutputFile.Add(lstContentFileB[lineIndex]);
                 }
             }
 
@@ -54,11 +49,6 @@ namespace ThreeWayMergeConsoleApplication
                 // Situation 5: Le fichier A est plus gros que le fichier original, donc peu importe la valeur des lignes dans le fichier A, on les ajoute dans
                 //              le fichier de sortie.
                 lstContentOutputFile.Add(lstContentFileA[lineIndex]);
-
-            for (; lineIndex < lstContentFileB.Count; ++lineIndex)
-                // Situation 6: Le fichier B est plus gros que le fichier original et le fichier A, donc peu importe la valeur des lignes 
-                //              dans le fichier B, on les ajoute dans le fichier de sortie.
-                lstContentOutputFile.Add(lstContentFileB[lineIndex]);
 
             File.WriteAllText(PATH_OUTPUT_FILE, string.Join("\n", lstContentOutputFile));                        
         }
