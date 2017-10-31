@@ -46,7 +46,7 @@ namespace ThreeWayMergeConsoleApplication
             }
 
             for (; lineIndex < lstContentFileA.Count; ++lineIndex)
-                // Situation 5: Le fichier A est plus gros que le fichier original, donc peu importe la valeur des lignes dans le fichier A, on les ajoute dans
+                // Situation 4: Le fichier A est plus gros que le fichier original, donc peu importe la valeur des lignes dans le fichier A, on les ajoute dans
                 //              le fichier de sortie.
                 lstContentOutputFile.Add(lstContentFileA[lineIndex]);
 
