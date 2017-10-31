@@ -1,4 +1,6 @@
-﻿/* Fait par: Jonathan Clavet-Grenier | CIP: claj2606 | Matricule: 16 070 207 */
+﻿/* Fait par: Jonathan Clavet-Grenier | CIP: claj2606 | Matricule: 16 070 207 
+   ALGORITHME: On priorise toujours le fichier A. Si le fichier A a supprimé des lignes, on va garder les lignes supprimées, car on les considère comme des "éléments".
+*/
 
 using System.Collections.Generic;
 using System.IO;
@@ -10,10 +12,11 @@ namespace ThreeWayMergeConsoleApplication
     {
         static void Main(string[] args)
         {
-            const string PATH_FILE_ORIGINAL = "../../../../CompareOriginal";
-            const string PATH_FILE_A = "../../../../CompareA";
-            const string PATH_FILE_B = "../../../../CompareB";
-            const string PATH_OUTPUT_FILE = "../../../../CompareSortie";
+            /*************************************** SI LE PROGRAMME PLANTE, CHANGEZ LES PATHS ICI. ***************************************/
+            const string PATH_FILE_ORIGINAL = "../CompareOriginal";
+            const string PATH_FILE_A = "../CompareA";
+            const string PATH_FILE_B = "../CompareB";
+            const string PATH_OUTPUT_FILE = "../CompareSortie";
 
             int lineIndex = 0;
 
